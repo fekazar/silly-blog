@@ -1,0 +1,48 @@
+.article-preview {
+    background-color: beige;
+    display: flex;
+    flex-direction: column;
+    --gap: 15px;
+    padding: 20px;
+}
+
+.main-section ul {
+    list-style-position: none;
+    padding: 0;
+}
+
+.preview-header-text {
+    font-size: 2rem;
+    color: black;
+    font-weight: bold;
+    --font-style: italic;
+    margin-bottom: 0;
+}
+
+.preview-header-date {
+    color: gray;
+    margin-top: 5px;
+    font-style: italic;
+}
+
+.read-more {
+    font-size: 1.2rem;
+    color: green;
+    -- font-style: italic;
+    text-decoration: none;
+}
+
+.read-more:hover {
+    text-decoration: underline;
+}
+
+#home-header {
+    text-align: center;
+    font-size: 2.5rem;
+    font-style: italic;
+}
+
+#home-main {
+    display: flex;
+    flex-direction: column;
+}

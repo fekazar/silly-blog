@@ -48,7 +48,7 @@ input[type="radio"] {
 .bordered {
     background: beige;
     border: 2px solid grey;
-    border-radius: 5px;
+    border-radius: 15px;
 }
 
 .admin-section {
@@ -84,4 +84,3 @@ input[type="radio"] {
     flex-direction: column;
     gap: 5px;
 }
-
