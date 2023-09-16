@@ -2,9 +2,9 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../../static/styles/reset.css" th:href="@{styles/reset.css}"/>
-    <link rel="stylesheet" href="../../static/styles/styles.css" th:href="@{styles/styles.css}"/>
-    <title>Title</title>
+    <link rel="stylesheet" href="../../static/styles/reset.css" th:href="@{/styles/reset.css}"/>
+    <link rel="stylesheet" href="../../static/styles/styles.css" th:href="@{/styles/styles.css}"/>
+    <title> Tokens </title>
 </head>
 <body>
     <header></header>
@@ -19,14 +19,14 @@
                 <form id="create-token-form" action="" method="POST">
                     <div class="input-container">
                         <label for="token-create"> Значение </label>
-                        <input id="token-create" type="text" name="token"/>
+                        <input id="token-create" type="text" name="token" required/>
                     </div>
 
                     <fieldset>
                         <legend> Полномочия </legend>
 
                         <div>
-                            <input id="authority-admin" type="radio" name="authority" value="admin"/>
+                            <input id="authority-admin" type="radio" name="authority" value="admin" required/>
                             <label for="authority-admin"> Администратор </label>
                         </div>
 
@@ -38,7 +38,7 @@
 
                     <div class="input-container">
                         <label for="description"> Описание токена </label>
-                        <textarea id="description" rows="3" name="description"></textarea>
+                        <textarea id="description" rows="3" name="description" required></textarea>
                     </div>
 
                     <button> Создать </button>
@@ -51,7 +51,7 @@
                 <form id="delete-token-form" action="" method="POST">
                     <div class="input-container">
                         <label for="token-delete"> Значение </label>
-                        <input id="token-delete" type="text" name="token"/>
+                        <input id="token-delete" type="text" name="token" required/>
                     </div>
 
                     <button> Удалить </button>
