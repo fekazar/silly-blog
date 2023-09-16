@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../static/styles/reset.css" th:href="@{styles/reset.css}"/>
+    <link rel="stylesheet" href="../../static/styles/styles.css" th:href="@{styles/styles.css}"/>
+    <title>Title</title>
+</head>
+<body>
+    <header></header>
+
+    <main>
+        <section class="main-section">
+            <h1> Управление токенами </h1>
+
+            <section class="admin-section bordered">
+                <h3> Создание токена </h3>
+
+                <form id="create-token-form" action="" method="POST">
+                    <div class="input-container">
+                        <label for="token-create"> Значение </label>
+                        <input id="token-create" type="text" name="token"/>
+                    </div>
+
+                    <fieldset>
+                        <legend> Полномочия </legend>
+
+                        <div>
+                            <input id="authority-admin" type="radio" name="authority" value="admin"/>
+                            <label for="authority-admin"> Администратор </label>
+                        </div>
+
+                        <div>
+                            <input id="authority-user" type="radio" name="authority" value="user"/>
+                            <label for="authority-user"> Пользователь </label>
+                        </div>
+                    </fieldset>
+
+                    <div class="input-container">
+                        <label for="description"> Описание токена </label>
+                        <textarea id="description" rows="3" name="description"></textarea>
+                    </div>
+
+                    <button> Создать </button>
+                </form>
+            </section>
+
+            <section class="admin-section bordered">
+                <h3> Удаление токена </h3>
+
+                <form id="delete-token-form" action="" method="POST">
+                    <div class="input-container">
+                        <label for="token-delete"> Значение </label>
+                        <input id="token-delete" type="text" name="token"/>
+                    </div>
+
+                    <button> Удалить </button>
+                </form>
+            </section>
+
+            <section class="admin-section bordered">
+                <h3> Список токенов </h3>
+
+                <table>
+                    <tr>
+                        <th> Значение </th>
+                        <th> Дата создания </th>
+                        <th> Описание </th>
+                        <th> Полномочия </th>
+                    </tr>
+
+                    <tr>
+                        <td> jklfj12lkjkjl21j3jkl </td>
+                        <td> 16-09-2023 16:52 </td>
+                        <td> Тестовый токен </td>
+                        <td> Admin </td>
+                    </tr>
+
+                    <tr>
+                        <td> jklfj12lkjkjl21j3jkl </td>
+                        <td> 16-09-2023 16:52 </td>
+                        <td> Тестовый токен </td>
+                        <td> Admin </td>
+                    </tr>
+
+                    <tr>
+                        <td> jklfj12lkjkjl21j3jkl </td>
+                        <td> 16-09-2023 16:52 </td>
+                        <td> Тестовый токен </td>
+                        <td> Admin </td>
+                    </tr>
+
+                    <tr>
+                        <td> jklfj12lkjkjl21j3jkl </td>
+                        <td> 16-09-2023 16:52 </td>
+                        <td> Тестовый токен </td>
+                        <td> Admin </td>
+                    </tr>
+                </table>
+            </section>
+        </section>
+
+        <aside>
+            <div class="side-banner bordered">
+                <h3> Навигация </h3>
+                <nav>
+                    <ul>
+                        <li> <a href="#"> Главная </a> </li>
+                        <li> <a href="#"> Сделать пост </a> </li>
+                        <li> <a href="#"> Управление токенами </a> </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+    </main>
+
+    <footer></footer>
+</body>
+</html>

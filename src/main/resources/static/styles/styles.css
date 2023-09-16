@@ -1,0 +1,87 @@
+main {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    padding: 50px;
+    gap: 50px;
+}
+
+input, textarea {
+    padding: 5px;
+    font-family: monospace;
+    border: 2px solid grey;
+    border-radius: 5px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+button {
+    padding: 5px;
+}
+
+fieldset {
+    border: 2px solid grey;
+    border-radius: 5px;
+    background: white;
+}
+
+li {
+    padding: 5px;
+}
+
+input[type="radio"] {
+    margin: 5px;
+}
+
+.main-section, main > aside {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+
+.side-banner {
+    padding: 15px;
+}
+
+.bordered {
+    background: beige;
+    border: 2px solid grey;
+    border-radius: 5px;
+}
+
+.admin-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+}
+
+.admin-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.admin-section > table {
+    text-align: center;
+    font-family: monospace;
+    border-collapse: collapse;
+}
+
+.admin-section > table td,
+.admin-section > table th {
+    padding: 10px;
+}
+
+.admin-section > table tr:nth-child(even) {
+    background-color: white;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
