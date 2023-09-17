@@ -19,7 +19,10 @@
             <div class="comment-create-section bordered">
                 <h3> Публикация от имени: Anon </h3>
 
-                <form action="" method="POST">
+                <form action="/write-comment" method="POST">
+                    <input type="hidden" name="article-id" th:value="${article_id}"/>
+                    <input type="hidden" name="author" value="anon"/>
+
                     <div class="input-container">
                         <label for="comment-text"> Текст комментария </label>
                         <textarea rows="15" id="comment-text" name="comment-text">
