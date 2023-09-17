@@ -1,0 +1,59 @@
+.article {
+    padding: 25px;
+    --background-color: ghostwhite;
+}
+
+.comment-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.comment {
+    display: flex;
+    align-items: center;
+}
+
+.comment-body {
+    width: 100%;
+    background: lightgrey;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.comment-indent {
+    display: flex;
+    box-sizing: border-box;
+}
+
+.indent:last-child {
+    margin-right: 15px;
+}
+
+.indent {
+    height: 8px;
+    width: 8px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 15px;
+}
+
+#to-main-header {
+    font-size: 2.5rem;
+    font-weight: bold;
+    font-style: italic;
+    color: black;
+    display: block;
+    text-align: center;
+}
+
+#to-main-header:hover {
+    color: green;
+}
+
+#write-comment {
+    display: inline;
+    font-size: 1.2rem;
+}

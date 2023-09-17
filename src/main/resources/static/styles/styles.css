@@ -1,6 +1,6 @@
 main {
-    display: grid;
-    grid-template-columns: 4fr 1fr;
+    display: flex;
+    flex-direction: column;
     padding: 50px;
     gap: 50px;
 }
@@ -34,12 +34,37 @@ input[type="radio"] {
     margin: 5px;
 }
 
-.main-section, main > aside {
+a {
+    color: green;
+    font-weight: bold;
+}
+
+.admin-main {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    padding: 50px;
+    gap: 50px;
+}
+
+.main-section, .admin-main > aside {
     display: flex;
     flex-direction: column;
     gap: 50px;
 }
 
+.article-header-text {
+    font-size: 2rem;
+    color: black;
+    font-weight: bold;
+    --font-style: italic;
+    margin-bottom: 0;
+}
+
+.article-header-date {
+    color: gray;
+    margin-top: 5px;
+    font-style: italic;
+}
 
 .side-banner {
     padding: 15px;
@@ -47,6 +72,7 @@ input[type="radio"] {
 
 .bordered {
     background: beige;
+    --background: ghostwhite;
     border: 2px solid grey;
     border-radius: 15px;
 }
