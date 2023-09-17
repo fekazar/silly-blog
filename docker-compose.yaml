@@ -1,0 +1,15 @@
+version: '2.2'
+
+services:
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+
+    environment:
+      POSTGRES_DB: blog
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+
+    volumes:
+      - ./postgresql_data:/var/lib/postgresql/data
