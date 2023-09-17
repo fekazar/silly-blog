@@ -1,6 +1,7 @@
 package edu.silly.blog.controller
 
 import edu.silly.blog.service.ArticleService
+import edu.silly.blog.service.CommentsService
 import org.springframework.http.HttpStatus
 import org.springframework.http.HttpStatusCode
 import org.springframework.stereotype.Controller
@@ -14,7 +15,8 @@ import org.springframework.web.server.ResponseStatusException
 
 @Controller
 class BlogController(
-    val articleService: ArticleService
+    val articleService: ArticleService,
+    val commentsService: CommentsService,
 ) {
     @GetMapping("/cringe")
     fun cringe(model: Model): String {
@@ -41,10 +43,17 @@ class BlogController(
         @PathVariable("id") articleId: Long,
         model: Model
     ): String {
+        // TODO: implements join fetch for this query
+        // TODO: implements depth calc for comment responses
+
         val article = articleService.getArticle(articleId)
         if (article == null)
             throw ResponseStatusException(HttpStatus.NOT_FOUND)
         model["article"] = article
+
+        val comments = commentsService.getArticleComments(articleId)
+        model["comments"] = comments
+
         return "article"
     }
 }
