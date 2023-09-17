@@ -7,5 +7,5 @@ CREATE TABLE IF NOT EXISTS comment(
     author VARCHAR(255) NOT NULL,
     creation_date TIMESTAMP NOT NULL,
     article_id INTEGER REFERENCES article(id) NOT NULL,
-    response_to INTEGER
+    response_to INTEGER REFERENCES comment(id)
 )

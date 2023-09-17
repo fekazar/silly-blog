@@ -18,24 +18,32 @@ class CommentsController(
     @GetMapping("/write-comment")
     fun writeComment(
         @RequestParam("article-id") articleId: Long,
+        @RequestParam("response-to", required = false) responseTo: Long?,
         model: Model,
     ): String {
         model["article_id"] = articleId
+        if (responseTo != null)
+            model["response_to"] = responseTo
+
         return "write-comment"
     }
 
     @PostMapping("/write-comment")
     fun postComment(
-        @ModelAttribute("article-id") articleId: Long,
-        @ModelAttribute("comment-text") commentText: String,
-        @ModelAttribute("author") author: String, // Name that will be displayed next to the comment
+        @RequestParam("article-id") articleId: Long,
+        @RequestParam("comment-text") commentText: String,
+        @RequestParam("author") author: String, // Name that will be displayed next to the comment
+        @RequestParam("response-to", required = false) responseTo: Long?,
     ): String {
         val commentToSave = Comment(
             text = commentText,
             author = author,
             articleId = articleId,
-            creationDate = LocalDateTime.now()
+            creationDate = LocalDateTime.now(),
+            responseTo = responseTo
         )
+
+        println("Comment to save: $commentToSave")
 
         val created = commentsService.save(commentToSave)
         return "redirect:/cringe/${articleId}"

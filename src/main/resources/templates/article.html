@@ -57,7 +57,7 @@
                             ахахахахах
                         </div>
 
-                        <div> <a href="#"> Ответить </a> </div>
+                        <div> <a href="#" th:href="@{/write-comment(article-id=${article.id}, response-to=${comment.id})}"> Ответить </a> </div>
                     </div>
                 </div>
             </section>
