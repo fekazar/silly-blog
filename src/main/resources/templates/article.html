@@ -42,11 +42,11 @@
                     </a>
                 </div>
 
-                <div class="comment">
+                <div class="comment" th:each="comment: ${comments}">
                     <div class="comment-indent">
                     </div>
 
-                    <div class="comment-body" th:each="comment: ${comments}">
+                    <div class="comment-body" >
                         <div class="comment-header">
                             <span class="comment-author" th:text="${comment.author}"> Default value </span>
                             <span class="comment-datetime" th:text="${comment.creationDate}"> 17-09-2003 19:48 </span>
