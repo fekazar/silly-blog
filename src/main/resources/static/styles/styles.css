@@ -39,6 +39,27 @@ a {
     font-weight: bold;
 }
 
+nav {
+    display: flex;
+    justify-content: space-around;
+}
+
+nav > a {
+    color: black;
+    text-decoration: underline;
+    font-size: 1.5rem;
+}
+
+nav > a:hover {
+    color: green;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
 .admin-main {
     display: grid;
     grid-template-columns: 4fr 1fr;
@@ -82,12 +103,6 @@ a {
     flex-direction: column;
     gap: 15px;
     padding: 20px;
-}
-
-.admin-section form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
 }
 
 .admin-section > table {
