@@ -39,21 +39,6 @@ a {
     font-weight: bold;
 }
 
-nav {
-    display: flex;
-    justify-content: space-around;
-}
-
-nav > a {
-    color: black;
-    text-decoration: underline;
-    font-size: 1.5rem;
-}
-
-nav > a:hover {
-    color: green;
-}
-
 form {
     display: flex;
     flex-direction: column;
