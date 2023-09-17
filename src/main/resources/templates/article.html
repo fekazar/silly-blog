@@ -44,6 +44,7 @@
 
                 <div class="comment" th:each="comment: ${comments}">
                     <div class="comment-indent">
+                        <span class="indent" th:each="indent: ${comment.indent}"></span>
                     </div>
 
                     <div class="comment-body" >

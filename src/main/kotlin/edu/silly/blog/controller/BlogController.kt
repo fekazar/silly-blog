@@ -1,9 +1,10 @@
 package edu.silly.blog.controller
 
+import edu.silly.blog.model.Comment
+import edu.silly.blog.model.CommentDto
 import edu.silly.blog.service.ArticleService
 import edu.silly.blog.service.CommentsService
 import org.springframework.http.HttpStatus
-import org.springframework.http.HttpStatusCode
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.ui.set
@@ -12,12 +13,20 @@ import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.server.ResponseStatusException
+import java.time.LocalDateTime
+import java.time.temporal.ChronoUnit
+import java.util.*
+import java.util.logging.Logger
+import kotlin.Comparator
 
 @Controller
 class BlogController(
     val articleService: ArticleService,
     val commentsService: CommentsService,
 ) {
+    // TODO: make better logging in the whole project
+    private val log = Logger.getLogger(BlogController::class.qualifiedName)
+
     @GetMapping("/cringe")
     fun cringe(model: Model): String {
         val articles = articleService.getLatestArticles()
@@ -44,15 +53,63 @@ class BlogController(
         model: Model
     ): String {
         // TODO: implements join fetch for this query
-        // TODO: implements depth calc for comment responses
-
         val article = articleService.getArticle(articleId)
         if (article == null)
             throw ResponseStatusException(HttpStatus.NOT_FOUND)
         model["article"] = article
 
         val comments = commentsService.getArticleComments(articleId)
-        model["comments"] = comments
+
+        val CommentComp = Comparator
+            .comparing<Comment, LocalDateTime> { it.creationDate }
+
+        val graph = comments
+            .groupingBy { it.responseTo }
+            .aggregate { key, accumulator: PriorityQueue<Comment>?, element, first ->
+                if (first) {
+                    val acc = PriorityQueue(CommentComp)
+                    acc.add(element)
+                    acc
+                } else {
+                    accumulator!!.add(element)
+                    accumulator
+                }
+            }
+
+        val commentsToRender = ArrayList<CommentDto>()
+
+
+        // WARNING!!!
+        // This should be a directed graph
+        // without ability to visit one node twice during dfs.
+        // Otherwise, may result in incorrect view or infinite loop.
+
+        fun dfs(v: Long?, depth: Int = 0) {
+            val pq = graph[v]
+            if (pq == null)
+                return
+
+            while (!pq.isEmpty()) {
+                val com = pq.poll()
+                commentsToRender.add(CommentDto(
+                    id = com.id!!,
+                    text = com.text,
+                    author = com.author,
+                    creationDate = com.creationDate,
+                    depth = depth
+                ))
+
+                dfs(com.id, depth + 1)
+            }
+        }
+
+        val startTime = LocalDateTime.now()
+        dfs(null)
+
+        val duration = ChronoUnit.MICROS.between(startTime, LocalDateTime.now())
+        log.info("Dfs took: $duration micros")
+
+        model["comments"] = commentsToRender
 
         return "article"
     }
