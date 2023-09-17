@@ -17,7 +17,12 @@ class BlogController(
     val articleService: ArticleService
 ) {
     @GetMapping("/cringe")
-    fun cringe() = "home"
+    fun cringe(model: Model): String {
+        val articles = articleService.getLatestArticles()
+        // TODO: limit wc in preview
+        model["preview_articles"] = articles
+        return "home"
+    }
 
     // Redirect admin to newly created article
     @PostMapping("/admin/create-article")

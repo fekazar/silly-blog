@@ -5,6 +5,10 @@
     padding: 20px;
 }
 
+.article-preview:not(:last-child) {
+    margin-bottom: 50px;
+}
+
 .main-section ul {
     list-style-position: none;
     padding: 0;

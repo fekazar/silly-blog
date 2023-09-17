@@ -15,4 +15,6 @@ class ArticleService(
     }
 
     fun getArticle(id: Long) = articleRepository.findById(id)
+
+    fun getLatestArticles(): List<Article> = articleRepository.getAllByOrderByCreationDateDesc()
 }
