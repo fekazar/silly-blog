@@ -37,7 +37,7 @@
                 <h2> Комментарии </h2>
 
                 <div>
-                    <a href="#" id="write-comment">
+                    <a href="#" th:href="@{/write-comment(article-id=${article.id})}" id="write-comment">
                         Написать комментарий
                     </a>
                 </div>
