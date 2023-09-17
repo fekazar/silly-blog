@@ -11,14 +11,14 @@
 <body>
     <main>
         <section class="main-section">
-            <a id="to-main-header" href="#"> На главную </a>
+            <a id="to-main-header" href="/cringe"> На главную </a>
             <article class="article bordered">
                 <div>
-                    <h2 class="article-header-text"> Твой батя моему в подметки не годится </h2>
-                    <div class="article-header-date"> 16-09-2005 </div>
+                    <h2 class="article-header-text" th:text="${article.header}"> Твой батя моему в подметки не годится </h2>
+                    <div class="article-header-date" th:text="${article.creationDate}"> 16-09-2005 </div>
                 </div>
 
-                <div class="typography">
+                <div class="typography" th:utext="${article.body}">
                     <p> Твой батя моему в подметки не годится. Мой ебашит вообще адовые блюда. </p>
 
                     Ну такой вот примерно рецепт усредненный, потому что вариаций масса. Берется суп, он не греется, греть – это не про моего батю.
