@@ -13,7 +13,11 @@ import org.springframework.security.web.context.HttpSessionSecurityContextReposi
 @Configuration
 class SecurityConfig {
     @Bean
-    fun securityChain(http: HttpSecurity, tokenService: TokenService): SecurityFilterChain {
+    fun securityChain(
+        http: HttpSecurity,
+        tokenService: TokenService,
+        rememberTokenServices: RememberTokenServices,
+    ): SecurityFilterChain {
         http {
             csrf {
                 // Disabled for dev
@@ -37,7 +41,8 @@ class SecurityConfig {
 
             // TODO: implement remember me services
             rememberMe {
-                rememberMeServices = NullRememberMeServices()
+                //rememberMeServices = NullRememberMeServices()
+                rememberMeServices = rememberTokenServices
             }
         }
 
