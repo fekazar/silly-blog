@@ -7,3 +7,5 @@ CREATE TABLE IF NOT EXISTS token(
     role VARCHAR(255) NOT NULL,
     description VARCHAR(255) NOT NULL
 )
+
+--rollback DROP TABLE IF EXISTS token;
