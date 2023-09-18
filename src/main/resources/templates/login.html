@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Login </title>
+</head>
+<body>
+    <!-- Different layout compared to other pages !-->
+    <main>
+        <h2> Введи токен доступа </h2>
+
+        <form action="/login" method="POST">
+            <label for="token"> Токен доступа </label>
+            <input id="token" type="text" name="token" required>
+
+            <label for="should-remember"> Запомнить меня </label>
+            <input id="should-remember" type="checkbox" name="should-remember">
+
+            <button> Login </button>
+        </form>
+    </main>
+</body>
+</html>
