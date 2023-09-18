@@ -13,4 +13,6 @@ class TokenService(
         val tokenToCreate = Token(token, role, description, LocalDateTime.now())
         tokenRepository.save(tokenToCreate)
     }
+
+    fun getAllTokens() = tokenRepository.findAll()
 }

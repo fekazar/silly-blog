@@ -67,32 +67,11 @@
                         <th> Полномочия </th>
                     </tr>
 
-                    <tr>
-                        <td> jklfj12lkjkjl21j3jkl </td>
-                        <td> 16-09-2023 16:52 </td>
-                        <td> Тестовый токен </td>
-                        <td> Admin </td>
-                    </tr>
-
-                    <tr>
-                        <td> jklfj12lkjkjl21j3jkl </td>
-                        <td> 16-09-2023 16:52 </td>
-                        <td> Тестовый токен </td>
-                        <td> Admin </td>
-                    </tr>
-
-                    <tr>
-                        <td> jklfj12lkjkjl21j3jkl </td>
-                        <td> 16-09-2023 16:52 </td>
-                        <td> Тестовый токен </td>
-                        <td> Admin </td>
-                    </tr>
-
-                    <tr>
-                        <td> jklfj12lkjkjl21j3jkl </td>
-                        <td> 16-09-2023 16:52 </td>
-                        <td> Тестовый токен </td>
-                        <td> Admin </td>
+                    <tr th:each="token: ${tokens}">
+                        <td th:text="${token.id}"></td>
+                        <td th:text="${token.creationDate}"></td>
+                        <td th:text="${token.description}"></td>
+                        <td th:text="${token.role}"></td>
                     </tr>
                 </table>
             </section>

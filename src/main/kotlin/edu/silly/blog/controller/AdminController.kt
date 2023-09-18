@@ -7,6 +7,8 @@ import jakarta.validation.Valid
 import jakarta.validation.constraints.NotBlank
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Controller
+import org.springframework.ui.Model
+import org.springframework.ui.set
 import org.springframework.validation.BindingResult
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.DeleteMapping
@@ -24,10 +26,16 @@ class AdminController(
     val tokenService: TokenService
 ) {
     @GetMapping("admin/create-article")
-    fun createArticle() = "admin/create-article"
+    fun createArticle(): String {
+        return "admin/create-article"
+    }
 
     @GetMapping("admin/tokens")
-    fun tokens() = "admin/tokens"
+    fun tokens(model: Model): String {
+        val tokens = tokenService.getAllTokens() // TODO: make dto (entity will do)
+        model["tokens"] = tokens
+        return "/admin/tokens"
+    }
 
     @PostMapping("/admin/create-token")
     fun createToken(
@@ -35,7 +43,7 @@ class AdminController(
         createToken: CreateTokenDto,
     ): String {
         tokenService.createToken(createToken.token, createToken.role, createToken.description)
-        return "admin/tokens"
+        return "redirect:/admin/tokens"
     }
 
     @DeleteMapping("/admin/delete-token")
