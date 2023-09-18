@@ -15,4 +15,5 @@ class TokenService(
     }
 
     fun getAllTokens() = tokenRepository.findAll()
+    fun deleteToken(token: String) = tokenRepository.deleteById(token)
 }

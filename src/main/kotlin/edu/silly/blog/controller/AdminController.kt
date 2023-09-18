@@ -49,12 +49,13 @@ class AdminController(
         return "redirect:/admin/tokens"
     }
 
-    @DeleteMapping("/admin/delete-token")
+    @PostMapping("/admin/delete-token")
     fun deleteToken(
         @RequestParam("token") token: String
-    ) {
+    ): String {
         // validation is not required
-        throw ResponseStatusException(HttpStatus.NOT_IMPLEMENTED)
+        tokenService.deleteToken(token)
+        return "redirect:/admin/tokens"
     }
 
     @ExceptionHandler(ConstraintViolationException::class)
