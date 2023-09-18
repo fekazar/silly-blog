@@ -25,6 +25,9 @@ import org.springframework.web.server.ResponseStatusException
 class AdminController(
     val tokenService: TokenService
 ) {
+    @GetMapping("/admin")
+    fun admin() = "admin/admin"
+
     @GetMapping("admin/create-article")
     fun createArticle(): String {
         return "admin/create-article"
