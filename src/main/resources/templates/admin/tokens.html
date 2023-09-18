@@ -14,7 +14,7 @@
             <section class="admin-section bordered">
                 <h3> Создание токена </h3>
 
-                <form id="create-token-form" action="" method="POST">
+                <form id="create-token-form" action="/admin/create-token" method="POST">
                     <div class="input-container">
                         <label for="token-create"> Значение </label>
                         <input id="token-create" type="text" name="token" required/>
@@ -24,12 +24,12 @@
                         <legend> Полномочия </legend>
 
                         <div>
-                            <input id="authority-admin" type="radio" name="authority" value="admin" required/>
+                            <input id="authority-admin" type="radio" name="role" value="admin" required/>
                             <label for="authority-admin"> Администратор </label>
                         </div>
 
                         <div>
-                            <input id="authority-user" type="radio" name="authority" value="user"/>
+                            <input id="authority-user" type="radio" name="role" value="user"/>
                             <label for="authority-user"> Пользователь </label>
                         </div>
                     </fieldset>

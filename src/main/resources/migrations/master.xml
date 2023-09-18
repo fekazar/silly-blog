@@ -7,5 +7,6 @@
 
     <include relativeToChangelogFile="true" file="changelog-1.0.sql"/>
     <include relativeToChangelogFile="true" file="comments-changelog.sql"/>
+    <include relativeToChangelogFile="true" file="tokens-changelog.sql"/>
 
 </databaseChangeLog>
