@@ -43,8 +43,6 @@ class CommentsController(
             responseTo = responseTo
         )
 
-        println("Comment to save: $commentToSave")
-
         val created = commentsService.save(commentToSave)
         return "redirect:/cringe/${articleId}"
     }
