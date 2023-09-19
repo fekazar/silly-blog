@@ -19,12 +19,6 @@ class SecurityConfig {
         rememberTokenServices: RememberTokenServices,
     ): SecurityFilterChain {
         http {
-            csrf {
-                // Disabled for dev
-                // TODO: setup csrf
-                //disable()
-            }
-
             logout {
                 deleteCookies(REMEMBER_TOKEN_COOKIE)
             }
@@ -43,9 +37,7 @@ class SecurityConfig {
                 securityContextRepository = HttpSessionSecurityContextRepository()
             }
 
-            // TODO: implement remember me services
             rememberMe {
-                //rememberMeServices = NullRememberMeServices()
                 rememberMeServices = rememberTokenServices
             }
         }
