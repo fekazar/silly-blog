@@ -36,6 +36,8 @@
                         <input id="token" type="text" name="token" required>
                     </div>
 
+                    <p class="error-message" th:if="${param.error}"> Неверный токен </p>
+
                     <div>
                         <input id="should-remember" type="checkbox" name="should-remember"/>
                         <label for="should-remember"> Запомнить меня </label>
@@ -45,6 +47,7 @@
 
                     <button> Войти </button>
                 </form>
+
             </section>
 
         </section>

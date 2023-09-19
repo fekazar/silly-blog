@@ -6,6 +6,7 @@ import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer
 import org.springframework.security.web.authentication.RememberMeServices
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter
 import org.springframework.security.web.context.SecurityContextRepository
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher
@@ -34,6 +35,7 @@ class TokenAuthenticationConfigurer(
         filter.setAuthenticationManager(authManager)
         filter.setRequiresAuthenticationRequestMatcher(requestMatcher)
         filter.setSecurityContextRepository(contextRepository)
+        filter.setAuthenticationFailureHandler(SimpleUrlAuthenticationFailureHandler("/login?error"))
 
         http.addFilterBefore(filter, BasicAuthenticationFilter::class.java)
     }
