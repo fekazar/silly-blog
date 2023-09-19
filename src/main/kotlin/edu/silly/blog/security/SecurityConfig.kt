@@ -22,7 +22,11 @@ class SecurityConfig {
             csrf {
                 // Disabled for dev
                 // TODO: setup csrf
-                disable()
+                //disable()
+            }
+
+            logout {
+                deleteCookies(REMEMBER_TOKEN_COOKIE)
             }
 
             authorizeRequests {

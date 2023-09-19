@@ -23,6 +23,8 @@
                         <textarea id="article-body" rows="30" name="article-body" required></textarea>
                     </div>
 
+                    <div th:replace="~{common :: csrf-input}"></div>
+
                     <button> Опубликовать </button>
                 </form>
             </section>

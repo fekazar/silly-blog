@@ -31,7 +31,7 @@ class RememberTokenServices(
     }
 
     override fun loginFail(request: HttpServletRequest, response: HttpServletResponse) {
-
+        // TODO: delete cookies
     }
 
     override fun loginSuccess(

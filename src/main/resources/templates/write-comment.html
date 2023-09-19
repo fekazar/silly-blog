@@ -23,6 +23,7 @@
                     <input type="hidden" name="article-id" th:value="${article_id}"/>
                     <input type="hidden" name="author" value="default anon"/>
                     <input type="hidden" name="response-to" th:if="${response_to != null}" th:value="${response_to}"/>
+                    <div th:replace="~{common :: csrf-input}"></div>
 
                     <div class="input-container">
                         <label for="comment-text"> Текст комментария </label>
