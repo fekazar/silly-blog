@@ -31,7 +31,16 @@ class RememberTokenServices(
     }
 
     override fun loginFail(request: HttpServletRequest, response: HttpServletResponse) {
-        // TODO: delete cookies
+        val cookies = request.cookies
+        if (cookies == null)
+            return
+
+        val rememberTokenCookie = cookies
+            .find { it.name == REMEMBER_TOKEN_COOKIE }
+            ?.also { it.maxAge = 0 }
+
+        if (rememberTokenCookie != null)
+            response.addCookie(rememberTokenCookie)
     }
 
     override fun loginSuccess(
