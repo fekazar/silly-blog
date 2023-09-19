@@ -6,6 +6,10 @@ CREATE TABLE IF NOT EXISTS token(
     creation_date TIMESTAMP NOT NULL,
     role VARCHAR(255) NOT NULL,
     description VARCHAR(255) NOT NULL
-)
+);
+
+INSERT INTO token (id, creation_date, role, description) VALUES (
+    'admindefault', now(), 'ROLE_ADMIN', 'Default generated token, should be deleted.'
+);
 
 --rollback DROP TABLE IF EXISTS token;
