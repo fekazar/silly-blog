@@ -7,4 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping
 class LoginController {
     @GetMapping("/login")
     fun login() = "login"
+
+    //@GetMapping("/logout")
+    //fun logout() = "logout"
 }

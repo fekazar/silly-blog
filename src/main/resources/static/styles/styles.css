@@ -45,6 +45,28 @@ form {
     gap: 20px;
 }
 
+section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+}
+
+section > table {
+    text-align: center;
+    font-family: monospace;
+    border-collapse: collapse;
+}
+
+section > table td,
+section > table th {
+    padding: 10px;
+}
+
+section > table tr:nth-child(even) {
+    background-color: white;
+}
+
 .admin-main {
     display: grid;
     grid-template-columns: 4fr 1fr;
@@ -83,30 +105,14 @@ form {
     border-radius: 15px;
 }
 
-section {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    padding: 20px;
-}
-
-section > table {
-    text-align: center;
-    font-family: monospace;
-    border-collapse: collapse;
-}
-
-section > table td,
-section > table th {
-    padding: 10px;
-}
-
-section > table tr:nth-child(even) {
-    background-color: white;
-}
-
 .input-container {
     display: flex;
     flex-direction: column;
     gap: 5px;
+}
+
+#main-logout {
+    display: block;
+    text-align: right;
+    padding: 10px;
 }

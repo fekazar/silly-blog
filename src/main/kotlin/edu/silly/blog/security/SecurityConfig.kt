@@ -3,12 +3,13 @@ package edu.silly.blog.security
 import edu.silly.blog.service.TokenService
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.http.HttpMethod
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.invoke
 import org.springframework.security.web.SecurityFilterChain
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint
-import org.springframework.security.web.authentication.NullRememberMeServices
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher
 
 @Configuration
 class SecurityConfig {
@@ -20,6 +21,8 @@ class SecurityConfig {
     ): SecurityFilterChain {
         http {
             logout {
+                logoutRequestMatcher = AntPathRequestMatcher("/logout", HttpMethod.GET.name())
+                logoutSuccessUrl = "/login"
                 deleteCookies(REMEMBER_TOKEN_COOKIE)
             }
 
