@@ -1,24 +1,52 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title> Login </title>
+    <link rel="stylesheet" href="../../static/styles/reset.css" th:href="@{/styles/reset.css}"/>
+    <link rel="stylesheet" href="../../static/styles/styles.css" th:href="@{/styles/styles.css}"/>
+    <link rel="stylesheet" href="../../static/styles/typography.css" th:href="@{/styles/typography.css}"/>
+    <link rel="stylesheet" href="../../static/styles/login.css" th:href="@{/styles/login.css}"/>
 </head>
 <body>
     <!-- Different layout compared to other pages !-->
     <main>
-        <h2> Введи токен доступа </h2>
+        <section class="main-section">
+            <section class="bordered" sec:authorize="isAuthenticated()">
+                <span class="typography"> <h2> Ты уже вошел </h2> </span>
+                <nav>
+                    <ul>
+                        <li> <a href="/cringe"> На главную </a> </li>
+                        <li> <a href="/logout"> Выйти (скатертью дорожка) </a> </li>
+                    </ul>
+                </nav>
+            </section>
 
-        <form action="/login" method="POST">
-            <label for="token"> Токен доступа </label>
-            <input id="token" type="text" name="token" required>
+            <section id="login-form" class="bordered" sec:authorize="isAnonymous()">
+                <div class="typography">
+                    <h2> Привет </h2>
+                    <p> Если тебе не повезло быть знакомым со мной, то можешь ознакомиться с глупостями, которые загружены на этот ресурс.
+                    Во время чтения может пропасть желание жить - это нормальная реакция на мой кринж.</p>
+                </div>
 
-            <label for="should-remember"> Запомнить меня </label>
-            <input id="should-remember" type="checkbox" name="should-remember"/>
-            <div th:replace="~{common :: csrf-input}"></div>
+                <form action="/login" method="POST">
+                    <div class="input-container">
+                        <label for="token"> Токен доступа </label>
+                        <input id="token" type="text" name="token" required>
+                    </div>
 
-            <button> Login </button>
-        </form>
+                    <div>
+                        <input id="should-remember" type="checkbox" name="should-remember"/>
+                        <label for="should-remember"> Запомнить меня </label>
+                    </div>
+
+                    <div th:replace="~{common :: csrf-input}"></div>
+
+                    <button> Войти </button>
+                </form>
+            </section>
+
+        </section>
     </main>
 </body>
 </html>

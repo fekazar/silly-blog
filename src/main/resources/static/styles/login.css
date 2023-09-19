@@ -1,0 +1,7 @@
+#login-section {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    min-width: 30rem;
+    padding: 1.5rem;
+}

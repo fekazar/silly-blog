@@ -27,7 +27,7 @@ class BlogController(
     // TODO: make better logging in the whole project
     private val log = Logger.getLogger(BlogController::class.qualifiedName)
 
-    @GetMapping("/cringe")
+    @GetMapping(value = ["/cringe", "/", "/home"])
     fun cringe(model: Model): String {
         val articles = articleService.getLatestArticles()
         // TODO: limit wc in preview

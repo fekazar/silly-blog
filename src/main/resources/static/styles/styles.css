@@ -83,25 +83,25 @@ form {
     border-radius: 15px;
 }
 
-.admin-section {
+section {
     display: flex;
     flex-direction: column;
     gap: 15px;
     padding: 20px;
 }
 
-.admin-section > table {
+section > table {
     text-align: center;
     font-family: monospace;
     border-collapse: collapse;
 }
 
-.admin-section > table td,
-.admin-section > table th {
+section > table td,
+section > table th {
     padding: 10px;
 }
 
-.admin-section > table tr:nth-child(even) {
+section > table tr:nth-child(even) {
     background-color: white;
 }
 
