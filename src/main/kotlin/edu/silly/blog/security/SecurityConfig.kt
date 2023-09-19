@@ -24,6 +24,7 @@ class SecurityConfig {
             }
 
             authorizeRequests {
+                authorize("/styles/**", permitAll)
                 authorize("/login/**", permitAll)
                 authorize("/admin/**", hasRole("ADMIN"))
                 authorize(anyRequest, authenticated)

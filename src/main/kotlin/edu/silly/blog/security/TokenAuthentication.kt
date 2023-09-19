@@ -8,7 +8,9 @@ class TokenAuthentication(
     authorities: List<GrantedAuthority>?
 ) : AbstractAuthenticationToken(authorities) {
     override fun getCredentials(): Any? = null
-    override fun getPrincipal(): Any? = null
+
+    // Crutch that allows spring to treat this object as authenticated user
+    override fun getPrincipal(): Any = "accesstoken"
 
     companion object {
         @JvmStatic
