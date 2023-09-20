@@ -116,9 +116,3 @@ section > table tr:nth-child(even) {
     font-weight: bold;
     margin: 0;
 }
-
-#main-logout {
-    display: block;
-    text-align: right;
-    padding: 10px;
-}
