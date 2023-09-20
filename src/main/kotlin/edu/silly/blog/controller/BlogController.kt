@@ -4,10 +4,14 @@ import edu.silly.blog.model.Comment
 import edu.silly.blog.model.CommentDto
 import edu.silly.blog.service.ArticleService
 import edu.silly.blog.service.CommentsService
+import edu.silly.blog.validation.CorrectHtml
+import jakarta.validation.ConstraintViolationException
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.ui.set
+import org.springframework.validation.annotation.Validated
+import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.PathVariable
@@ -20,6 +24,7 @@ import java.util.logging.Logger
 import kotlin.Comparator
 
 @Controller
+@Validated
 class BlogController(
     val articleService: ArticleService,
     val commentsService: CommentsService,
@@ -29,8 +34,8 @@ class BlogController(
 
     @GetMapping(value = ["/cringe", "/", "/home"])
     fun cringe(model: Model): String {
-        val articles = articleService.getLatestArticles()
         // TODO: limit wc in preview
+        val articles = articleService.getLatestArticles()
         model["preview_articles"] = articles
         return "home"
     }
@@ -39,12 +44,19 @@ class BlogController(
     @PostMapping("/admin/create-article")
     fun createArticle(
         @ModelAttribute("article-header") articleHeader: String,
+
+        @CorrectHtml
         @ModelAttribute("article-body") articleBody: String,
         model: Model
     ): String {
         val created = articleService.createArticle(articleHeader, articleBody)
-        model["article"] = created.copy(creationDate = created.creationDate.minusYears(18))
         return "redirect:/cringe/${created.id}"
+    }
+
+    @ExceptionHandler(value = [ConstraintViolationException::class])
+    fun constraintsViolationHandler(cex: ConstraintViolationException, model: Model): String {
+        model["violations"] = cex.constraintViolations.map { it.message }
+        return "errors"
     }
 
     @GetMapping("/cringe/{id}")
@@ -77,7 +89,6 @@ class BlogController(
             }
 
         val commentsToRender = ArrayList<CommentDto>()
-
 
         // WARNING!!!
         // This should be a directed graph

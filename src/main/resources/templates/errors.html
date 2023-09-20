@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title> Errors </title>
+
+    <link rel="stylesheet" href="../../static/styles/reset.css" th:href="@{/styles/reset.css}"/>
+    <link rel="stylesheet" href="../../static/styles/styles.css" th:href="@{/styles/styles.css}"/>
+</head>
+<body>
+    <section class="main-section">
+        <section>
+            <div> There are some errors: </div>
+            <div  th:each="errorMessage: ${violations}">
+                <div class="error-message" th:text="${errorMessage}"> </div>
+            </div>
+        </section>
+    </section>
+</body>
+</html>
