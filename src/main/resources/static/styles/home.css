@@ -1,8 +1,11 @@
+.preview-bottom {
+    margin-top: 1.2rem;
+}
 
 .article-preview {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    -- gap: 15px;
     padding: 20px;
 }
 

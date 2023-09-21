@@ -5,3 +5,81 @@
 .typography > div > *:last-child {
     margin-bottom: 0;
 }
+
+.typography h1 {
+    display: block;
+    font-size: 2rem;
+    margin-top: 0.67rem;
+    margin-bottom: 0.67rem;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+.typography h2 {
+    display: block;
+    font-size: 1.5rem;
+    margin-top: 0.83rem;
+    margin-bottom: 0.83rem;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+.typography h3 {
+    display: block;
+    font-size: 1.17rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+.typography h4 {
+    display: block;
+    margin-top: 1.33rem;
+    margin-bottom: 1.33rem;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+.typography h5 {
+    display: block;
+    font-size: .83rem;
+    margin-top: 1.67rem;
+    margin-bottom: 1.67rem;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+.typography h6 {
+    display: block;
+    font-size: .67rem;
+    margin-top: 2.33rem;
+    margin-bottom: 2.33rem;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+.typography p {
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.typography ul {
+    display: block;
+    list-style-type: disc;
+    list-style-position: inside;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 40px;
+}
