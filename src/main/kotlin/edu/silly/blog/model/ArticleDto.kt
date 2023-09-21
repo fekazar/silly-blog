@@ -3,16 +3,14 @@ package edu.silly.blog.model
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
-import kotlin.time.Duration
 
-data class CommentDto(
+data class ArticleDto(
     val id: Long,
-    val text: String,
-    val author: String,
+    val header: String,
     val creationDateBacking: LocalDateTime,
-    val depth: Int,
+    val preview: String? = null,
+    val body: String? = null,
 ) {
-    val indent get() = 1..depth
     val creationDate
         get() = creationDateBacking
             .minus(18, ChronoUnit.YEARS)

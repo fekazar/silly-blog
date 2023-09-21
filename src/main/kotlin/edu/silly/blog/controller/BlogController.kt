@@ -1,5 +1,6 @@
 package edu.silly.blog.controller
 
+import edu.silly.blog.model.ArticleDto
 import edu.silly.blog.model.Comment
 import edu.silly.blog.model.CommentDto
 import edu.silly.blog.service.ArticleService
@@ -36,6 +37,7 @@ class BlogController(
     fun cringe(model: Model): String {
         // TODO: limit wc in preview
         val articles = articleService.getLatestArticles()
+            .map { ArticleDto(it.id!!, it.header!!, it.creationDate!!, it.preview) }
         model["preview_articles"] = articles
         return "home"
     }
@@ -68,7 +70,8 @@ class BlogController(
         val article = articleService.getArticle(articleId)
         if (article == null)
             throw ResponseStatusException(HttpStatus.NOT_FOUND)
-        model["article"] = article
+
+        model["article"] = ArticleDto(article.id!!, article.header!!, article.creationDate!!, body = article.body)
 
         val comments = commentsService.getArticleComments(articleId)
 
@@ -106,7 +109,7 @@ class BlogController(
                     id = com.id!!,
                     text = com.text,
                     author = com.author,
-                    creationDate = com.creationDate,
+                    creationDateBacking = com.creationDate,
                     depth = depth
                 ))
 
