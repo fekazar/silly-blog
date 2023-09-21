@@ -42,7 +42,6 @@ class ArticleService(
                     .filterNot { it.isEmpty() }
                     .take(MAX_PREVIEW_WORDS - wc)
 
-                println("words: $words")
                 wc += words.size
 
                 val toAppend = DocumentHelper.createElement(cur.name)
@@ -64,7 +63,9 @@ class ArticleService(
         dfs(root, preview)
 
         val dest = StringWriter()
-        preview.write(dest)
+        for (element in preview.elements())
+            element.write(dest)
+
         return dest.toString()
     }
 }
