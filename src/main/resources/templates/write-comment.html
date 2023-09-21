@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title> Write comment </title>
@@ -17,11 +17,15 @@
 
         <section class="main-section">
             <div class="comment-create-section bordered">
-                <h3> Публикация от имени: Anon </h3>
+                <h3 sec:authorize="hasRole('USER')"> Публикация от имени: Anon </h3>
+                <h3 sec:authorize="hasRole('ADMIN')"> Публикация от имени: Admin </h3>
 
                 <form action="/write-comment" method="POST">
                     <input type="hidden" name="article-id" th:value="${article_id}"/>
-                    <input type="hidden" name="author" value="default anon"/>
+
+                    <input type="hidden" name="author" value="Anon" sec:authorize="hasRole('USER')"/>
+                    <input type="hidden" name="author" value="Admin" sec:authorize="hasRole('ADMIN')"/>
+
                     <input type="hidden" name="response-to" th:if="${response_to != null}" th:value="${response_to}"/>
                     <div th:replace="~{common :: csrf-input}"></div>
 
