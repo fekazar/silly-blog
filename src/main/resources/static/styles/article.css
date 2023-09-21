@@ -1,6 +1,7 @@
 .article {
-    padding: 25px;
-    --background-color: ghostwhite;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
 }
 
 .comment-section {

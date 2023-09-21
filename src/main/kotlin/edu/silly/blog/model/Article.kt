@@ -4,14 +4,19 @@ import jakarta.persistence.*
 import java.time.LocalDateTime
 
 @Entity
-data class Article(
-    val header: String,
-    val body: String,
+class Article(
+    var header: String? = null,
+    var body: String? = null,
+    var preview: String? = null,
 
     @Column(name = "creation_date")
-    val creationDate: LocalDateTime,
+    var creationDate: LocalDateTime? = null,
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null,
-)
+    var id: Long? = null,
+) {
+    // This cringe for Hibernate to find required ctor
+    constructor(header: String?, preview: String?, creationDate: LocalDateTime?, id: Long?) :
+            this(header = header, body = null, preview = preview, creationDate = creationDate, id = id)
+}

@@ -24,6 +24,8 @@ dependencies {
 	implementation 'org.liquibase:liquibase-core:4.23.2'
 	runtimeOnly 'org.postgresql:postgresql'
 
+	implementation 'org.dom4j:dom4j:2.1.4'
+
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
