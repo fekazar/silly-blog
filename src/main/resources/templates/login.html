@@ -2,7 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title> Login </title>
+
     <link rel="stylesheet" href="../../static/styles/reset.css" th:href="@{/styles/reset.css}"/>
     <link rel="stylesheet" href="../../static/styles/styles.css" th:href="@{/styles/styles.css}"/>
     <link rel="stylesheet" href="../../static/styles/typography.css" th:href="@{/styles/typography.css}"/>
@@ -12,7 +15,7 @@
     <!-- Different layout compared to other pages !-->
     <main>
         <section class="main-section">
-            <section class="bordered" sec:authorize="isAuthenticated()">
+            <section class="bordered spaced" sec:authorize="isAuthenticated()">
                 <span class="typography"> <h2> Ты уже вошел </h2> </span>
 
                 <nav>
@@ -23,10 +26,10 @@
                 </nav>
             </section>
 
-            <section id="login-form" class="bordered" sec:authorize="isAnonymous()">
+            <section id="login-form" class="bordered spaced" sec:authorize="isAnonymous()">
                 <div class="typography">
                     <h2> Привет </h2>
-                    <p> Если тебе не повезло быть знакомым со мной, то можешь ознакомиться с глупостями, которые загружены на этот ресурс.
+                    <p> Если тебе не повезло быть знакомым со мной, то можешь ознакомиться и с глупостями, которые загружены на этот ресурс.
                     Во время чтения может пропасть желание жить - это нормальная реакция на мой кринж.</p>
                 </div>
 

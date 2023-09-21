@@ -1,7 +1,3 @@
-.typography {
-    font-size: 1.1rem;
-}
-
 .typography > div > *:last-child {
     margin-bottom: 0;
 }

@@ -1,8 +1,8 @@
 main {
     display: flex;
     flex-direction: column;
-    padding: 50px;
-    gap: 50px;
+    padding: 1.5rem;
+    gap: 1.5rem;
 }
 
 input, textarea {
@@ -49,7 +49,6 @@ section {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    padding: 20px;
 }
 
 section > table {
@@ -72,6 +71,10 @@ section > table tr:nth-child(even) {
     grid-template-columns: 4fr 1fr;
     padding: 50px;
     gap: 50px;
+}
+
+.main-section {
+    padding: 0;
 }
 
 .main-section, .admin-main > aside {
@@ -103,6 +106,10 @@ section > table tr:nth-child(even) {
     --background: ghostwhite;
     border: 2px solid grey;
     border-radius: 15px;
+}
+
+.spaced {
+    padding: 1.5rem;
 }
 
 .input-container {
