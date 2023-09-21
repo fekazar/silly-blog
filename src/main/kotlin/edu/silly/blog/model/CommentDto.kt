@@ -3,7 +3,6 @@ package edu.silly.blog.model
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
-import kotlin.time.Duration
 
 data class CommentDto(
     val id: Long,
@@ -16,5 +15,5 @@ data class CommentDto(
     val creationDate
         get() = creationDateBacking
             .minus(18, ChronoUnit.YEARS)
-            .format(DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm"))
+            .format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm"))
 }
