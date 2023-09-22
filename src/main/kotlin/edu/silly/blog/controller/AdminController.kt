@@ -37,7 +37,7 @@ class AdminController(
     fun tokens(model: Model): String {
         val tokens = tokenService.getAllTokens() // TODO: make dto (entity will do)
         model["tokens"] = tokens
-        return "/admin/tokens"
+        return "admin/tokens"
     }
 
     @PostMapping("/admin/create-token")
@@ -55,7 +55,7 @@ class AdminController(
     ): String {
         // validation is not required
         tokenService.deleteToken(token)
-        return "redirect:/admin/tokens"
+        return "redirect:admin/tokens"
     }
 
     @ExceptionHandler(ConstraintViolationException::class)

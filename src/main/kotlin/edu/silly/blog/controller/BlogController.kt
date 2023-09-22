@@ -52,7 +52,7 @@ class BlogController(
         model: Model
     ): String {
         val created = articleService.createArticle(articleHeader, articleBody)
-        return "redirect:/cringe/${created.id}"
+        return "redirect:cringe/${created.id}"
     }
 
     @ExceptionHandler(value = [ConstraintViolationException::class])
@@ -80,7 +80,7 @@ class BlogController(
 
         val graph = comments
             .groupingBy { it.responseTo }
-            .aggregate { key, accumulator: PriorityQueue<Comment>?, element, first ->
+            .aggregate { _, accumulator: PriorityQueue<Comment>?, element, first ->
                 if (first) {
                     val acc = PriorityQueue(CommentComp)
                     acc.add(element)
