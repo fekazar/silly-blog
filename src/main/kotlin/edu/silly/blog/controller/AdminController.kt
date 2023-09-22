@@ -55,7 +55,7 @@ class AdminController(
     ): String {
         // validation is not required
         tokenService.deleteToken(token)
-        return "redirect:admin/tokens"
+        return "redirect:/admin/tokens"
     }
 
     @ExceptionHandler(ConstraintViolationException::class)
