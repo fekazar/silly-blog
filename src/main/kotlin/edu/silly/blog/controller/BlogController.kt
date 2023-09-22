@@ -52,7 +52,7 @@ class BlogController(
         model: Model
     ): String {
         val created = articleService.createArticle(articleHeader, articleBody)
-        return "redirect:cringe/${created.id}"
+        return "redirect:/cringe/${created.id}"
     }
 
     @ExceptionHandler(value = [ConstraintViolationException::class])
