@@ -1,17 +1,24 @@
 package edu.silly.blog.controller
 
 import edu.silly.blog.model.Comment
+import edu.silly.blog.model.CreateCommentDto
 import edu.silly.blog.service.CommentsService
+import jakarta.validation.ConstraintViolationException
+import jakarta.validation.Valid
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.ui.set
+import org.springframework.validation.BindingResult
+import org.springframework.validation.annotation.Validated
+import org.springframework.web.bind.MethodArgumentNotValidException
+import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestParam
 import java.time.LocalDateTime
 
 @Controller
+@Validated
 class CommentsController(
     val commentsService: CommentsService
 ) {
@@ -30,20 +37,23 @@ class CommentsController(
 
     @PostMapping("/write-comment")
     fun postComment(
-        @RequestParam("article-id") articleId: Long,
-        @RequestParam("comment-text") commentText: String,
-        @RequestParam("author") author: String, // Name that will be displayed next to the comment
-        @RequestParam("response-to", required = false) responseTo: Long?,
+        @Valid toCreate: CreateCommentDto,
     ): String {
         val commentToSave = Comment(
-            text = commentText,
-            author = author,
-            articleId = articleId,
+            text = toCreate.commentText,
+            author = toCreate.author,
+            articleId = toCreate.articleId,
             creationDate = LocalDateTime.now(),
-            responseTo = responseTo
+            responseTo = toCreate.responseTo
         )
 
         val created = commentsService.save(commentToSave)
-        return "redirect:/cringe/${articleId}"
+        return "redirect:/cringe/${toCreate.articleId}"
+    }
+
+    @ExceptionHandler(value = [MethodArgumentNotValidException::class])
+    fun constraintsViolationHandler(ex: MethodArgumentNotValidException, model: Model): String {
+        model["violations"] = ex.fieldErrors.map { it.defaultMessage }
+        return "errors"
     }
 }

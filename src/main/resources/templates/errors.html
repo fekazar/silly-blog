@@ -8,13 +8,15 @@
     <link rel="stylesheet" href="../../static/styles/styles.css" th:href="@{/styles/styles.css}"/>
 </head>
 <body>
-    <section class="main-section">
-        <section>
-            <div> There are some errors: </div>
-            <div  th:each="errorMessage: ${violations}">
-                <div class="error-message" th:text="${errorMessage}"> </div>
-            </div>
+    <main>
+        <section class="main-section">
+            <section>
+                <h1> Похоже, что что-то не так: </h1>
+                <div  th:each="errorMessage: ${violations}">
+                    <div class="error-message" th:text="${errorMessage}"> </div>
+                </div>
+            </section>
         </section>
-    </section>
+    </main>
 </body>
 </html>

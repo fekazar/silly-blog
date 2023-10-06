@@ -35,7 +35,6 @@ class BlogController(
 
     @GetMapping(value = ["/cringe", "/", "/home"])
     fun cringe(model: Model): String {
-        // TODO: limit wc in preview
         val articles = articleService.getLatestArticles()
             .map { ArticleDto(it.id!!, it.header!!, it.creationDate!!, it.preview) }
         model["preview_articles"] = articles
